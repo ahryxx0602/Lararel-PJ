@@ -12,6 +12,11 @@ class ProductsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function __construct()
+    {
+        //Sử dụng Session để check Login
+    }
     public function index()
     {
         //

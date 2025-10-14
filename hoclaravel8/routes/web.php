@@ -4,8 +4,12 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
+use App\Http\Controllers\Admin\DashboardController;
 
 //Client router
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
 Route::prefix('category')->group(function () {
 
 
@@ -28,6 +32,7 @@ Route::prefix('category')->group(function () {
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory'])->name('categories.delete');
 });
 //Admin route
-Route::prefix('admin')->group(function () {
-    Route::resource('products', ProductsController::class);
+Route::middleware('auth.admin')->prefix('admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index']);
+    Route::middleware('auth.admin.product')->resource('products', ProductsController::class);
 });
