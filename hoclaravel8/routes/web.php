@@ -5,11 +5,10 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\Admin\ProductsController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\HomeController;
 
 //Client router
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::prefix('category')->group(function () {
 
 
@@ -31,6 +30,8 @@ Route::prefix('category')->group(function () {
 
     Route::delete('/delete/{id}', [CategoriesController::class, 'deleteCategory'])->name('categories.delete');
 });
+
+Route::get('san-pham/{id}', [HomeController::class, 'getProductDetail']);
 //Admin route
 Route::middleware('auth.admin')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);

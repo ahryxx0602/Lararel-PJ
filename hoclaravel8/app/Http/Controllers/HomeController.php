@@ -9,7 +9,9 @@ class HomeController extends Controller
     //Action index()
     public function index()
     {
-        return 'home';
+        $title = "Học lập trình web Laravel";
+        $content = "Nội dung học laravel";
+        return view('home', compact('title', 'content'));
     }
     public function getNews()
     {
@@ -19,5 +21,9 @@ class HomeController extends Controller
     public function getCategory($id)
     {
         return "Category" . $id;
+    }
+    public function getProductDetail($id)
+    {
+        return view('clients.products.detail', compact('id'));
     }
 }
