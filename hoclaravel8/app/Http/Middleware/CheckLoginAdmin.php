@@ -16,9 +16,12 @@ class CheckLoginAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        if ($this->isLogin()) {
+        if (!$this->isLogin()) {
             return redirect("/");
         }
+        // if ($request->is('admin/́')) {
+        //     echo "Đây là trang quản trị";
+        // }
 
         return $next($request);
     }

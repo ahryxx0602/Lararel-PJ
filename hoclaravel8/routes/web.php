@@ -8,8 +8,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
 
 //Client router
-Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::prefix('category')->group(function () {
+Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth.admin');
+Route::middleware('auth.admin')->prefix('categories')->group(function () {
 
 
     //Danh sách chuyên mục
@@ -35,5 +35,5 @@ Route::get('san-pham/{id}', [HomeController::class, 'getProductDetail']);
 //Admin route
 Route::middleware('auth.admin')->prefix('admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index']);
-    Route::middleware('auth.admin.product')->resource('products', ProductsController::class);
+    Route::resource('products', ProductsController::class)->middleware('auth.admin.product ');
 });
