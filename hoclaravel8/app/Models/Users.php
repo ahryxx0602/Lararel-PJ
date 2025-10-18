@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 use App\Models\Phone;
+use App\Models\Groups;
 
 class Users extends Model
 {
@@ -18,6 +19,15 @@ class Users extends Model
         return $this->hasOne(
             Phone::class,
             "user_id",
+            "id"
+        );
+    }
+
+    public function group()
+    {
+        return $this->belongsTo(
+            Groups::class,
+            "group_id",
             "id"
         );
     }

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Users;
 use App\Models\Phone;
+use App\Models\Groups;
 
 class UserController extends Controller
 {
@@ -196,10 +197,26 @@ class UserController extends Controller
         // $phone = Users::find(1)->phone;
         // dd($phone);
 
-        $user = Phone::where('phone', "0327461459")->first()->user;
-        $fullName = $user->fullName;
-        $email = $user->email;
-        echo "Full Name: " . $fullName . "<br>";
-        echo "Email: " . $email . "<br>";
+        // $user = Phone::where('phone', "0327461459")->first()->user;
+        // $fullName = $user->fullName;
+        // $email = $user->email;
+        // echo "Full Name: " . $fullName . "<br>";
+        // echo "Email: " . $email . "<br>";
+
+        // $users = Groups::find(1)
+        // ->users()
+        // ->where('email', 'phvanthanh11@gmail.com')->get();
+        // if ($users->count() > 0) {
+        //     foreach ($users as $item) {
+        //         echo "Full Name: " . $item->fullName . "<br>";
+        //         echo "Email: " . $item->email . "<br>";
+        //         echo "---------------------<br>";
+        //     }
+        // }
+
+
+        $groups = Users::find(1)->group;
+        $groupName = $groups->name;
+        echo "Group Name: " . $groupName . "<br>";
     }
 }
