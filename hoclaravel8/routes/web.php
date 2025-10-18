@@ -8,6 +8,8 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Models\Mechanics;
+
 
 //Client router
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth.admin');
@@ -35,4 +37,9 @@ Route::prefix('posts')->name('posts.')->group(function () {
     Route::post('/delete-multiple', [PostController::class, 'handleDeleteMultiple'])->name('delete-multiple');
     Route::get('/restore/{id}', [PostController::class, 'restore'])->name('restore');
     Route::get('/force-delete/{id}', [PostController::class, 'forceDelete'])->name('force-delete');
+});
+
+Route::get('/mechanic-car-owner', function () {
+    $mechanic = Mechanics::find(1);
+    dd($mechanic->carOwner);
 });
