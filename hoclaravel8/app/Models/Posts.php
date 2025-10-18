@@ -6,8 +6,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
+use App\Models\Categories;
 
-class Post extends Model
+class Posts extends Model
 {
     use HasFactory, SoftDeletes;
     //Quy ước tên Table
@@ -38,4 +39,14 @@ class Post extends Model
         'content',
         'status'
     ];
+
+    public function categories()
+    {
+        return $this->belongsToMany(
+            Categories::class,
+            "categories_posts",
+            "post_id",
+            "category_id"
+        )->withPivot('created_at');
+    }
 }

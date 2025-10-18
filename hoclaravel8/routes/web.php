@@ -8,9 +8,10 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\PostController;
+use App\Models\Categories;
 use App\Models\Mechanics;
 use App\Models\Country;
-
+use App\Models\Posts;
 
 //Client router
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth.admin');
@@ -43,6 +44,16 @@ Route::prefix('posts')->name('posts.')->group(function () {
 Route::get('/mechanic-car-owner', function () {
     // $owner = Mechanics::find(1);
     // dd($owner->carOwner);
-    $post = Country::find(1)->post;
-    dd($post);
+    // $post = Country::find(1)->post;
+    // dd($post);
+
+    // $post = Categories::find(1)->posts()->get();
+    // dd($post);
+
+    $category = Posts::find(1)->categories;
+    foreach ($category as $item) {
+        if (!empty($item->pivot->created_at)) {
+            echo $item->pivot->created_at . '<br>';
+        }
+    }
 });
