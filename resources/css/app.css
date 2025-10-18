@@ -1,0 +1,34 @@
+.table-custom {
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    }
+
+    .table-custom thead {
+        background: linear-gradient(90deg, #007bff, #00bcd4);
+        color: #fff;
+        text-transform: uppercase;
+        font-weight: 600;
+    }
+
+    .table-custom tbody tr:hover {
+        background-color: #f2f9ff;
+        transition: 0.2s ease-in-out;
+    }
+
+    .badge-status {
+        padding: 6px 12px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 500;
+    }
+
+    .btn-action {
+        border-radius: 20px;
+        padding: 4px 10px;
+        transition: 0.2s;
+    }
+
+    .btn-action:hover {
+        transform: scale(1.05);
+    }
