@@ -12,6 +12,7 @@ use App\Models\Categories;
 use App\Models\Mechanics;
 use App\Models\Country;
 use App\Models\Posts;
+use App\Models\Users;
 
 //Client router
 Route::get('/', [HomeController::class, 'index'])->name('home')->middleware('auth.admin');
@@ -50,10 +51,13 @@ Route::get('/mechanic-car-owner', function () {
     // $post = Categories::find(1)->posts()->get();
     // dd($post);
 
-    $category = Posts::find(1)->categories;
-    foreach ($category as $item) {
-        if (!empty($item->pivot->created_at)) {
-            echo $item->pivot->created_at . '<br>';
-        }
-    }
+    // $category = Posts::find(1)->categories;
+    // foreach ($category as $item) {
+    //     if (!empty($item->pivot->created_at)) {
+    //         echo $item->pivot->created_at . '<br>';
+    //     }
+    // }
+
+    $phone = Users::find(4)->phone;
+    dd($phone);
 });

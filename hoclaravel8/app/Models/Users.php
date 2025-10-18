@@ -20,7 +20,9 @@ class Users extends Model
             Phone::class,
             "user_id",
             "id"
-        );
+        )->withDefault(function ($phone) {
+            $phone->phone = "Không xác định";
+        });
     }
 
     public function group()
