@@ -5,9 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
+
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, SoftDeletes;
     //Quy ước tên Table
     /*
     Tên Model: Post => Tên bảng: posts
@@ -24,10 +26,16 @@ class Post extends Model
     // public $incrementing = true;
     // protected $keyType = 'string';
 
-    public $timestamps = false;
+    public $timestamps = true;
 
     // Cấu hình giá trị mặc định
     protected $attributes = [
         'status' => 0,
+    ];
+
+    protected $fillable = [
+        'title',
+        'content',
+        'status'
     ];
 }

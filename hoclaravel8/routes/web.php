@@ -26,7 +26,12 @@ Route::prefix('users')->name('users.')->group(function () {
 
 Route::prefix('posts')->name('posts.')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('index');
-    Route::get('add', [PostController::class, 'add'])->name('add');
-    Route::get('update/{id}', [PostController::class, 'update'])->name('update');
-    Route::get('delete/{id}', [PostController::class, 'delete'])->name('delete');
+    Route::get('/add', [PostController::class, 'add'])->name('add');
+    Route::post('/add', [PostController::class, 'postAdd'])->name('post-add');
+    Route::get('/edit/{id}', [PostController::class, 'edit'])->name('edit');
+    Route::post('/update', [PostController::class, 'postEdit'])->name('post-edit');
+    Route::get('/delete/{id}', [PostController::class, 'delete'])->name('delete');
+    Route::post('/delete-multiple', [PostController::class, 'handleDeleteMultiple'])->name('delete-multiple');
+    Route::get('/restore/{id}', [PostController::class, 'restore'])->name('restore');
+    Route::get('/force-delete/{id}', [PostController::class, 'forceDelete'])->name('force-delete');
 });
