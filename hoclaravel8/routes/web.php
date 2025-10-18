@@ -22,6 +22,7 @@ Route::prefix('users')->name('users.')->group(function () {
     Route::post('/update', [UserController::class, 'postEdit'])->name('post-edit');
     Route::get('/delete/{id}', [UserController::class, 'delete'])->name('delete');
     Route::get('/detail/{id}', [UserController::class, 'getDetailUser'])->name('detail');
+    Route::get('/hoc-relations', [UserController::class, 'relations'])->name('hoc-relations');
 });
 
 Route::prefix('posts')->name('posts.')->group(function () {

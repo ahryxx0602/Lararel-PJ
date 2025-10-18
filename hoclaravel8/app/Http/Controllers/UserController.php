@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
+use App\Models\Phone;
 
 class UserController extends Controller
 {
@@ -182,5 +183,23 @@ class UserController extends Controller
         } else {
             return redirect()->route('users.index')->with('msg', 'Liên kết không tồn tại');
         }
+    }
+    public function relations()
+    {
+        // $phone = Users::find(1)->phone;
+        // $idPhone = $phone->id;
+        // $phoneNumber = $phone->phone;
+        // echo "ID Phone: " . $idPhone . "<br>";
+        // echo "Phone Number: " . $phoneNumber . "<br>";
+
+
+        // $phone = Users::find(1)->phone;
+        // dd($phone);
+
+        $user = Phone::where('phone', "0327461459")->first()->user;
+        $fullName = $user->fullName;
+        $email = $user->email;
+        echo "Full Name: " . $fullName . "<br>";
+        echo "Email: " . $email . "<br>";
     }
 }
