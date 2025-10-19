@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Users;
-use App\Models\Phone;
-use App\Models\Groups;
 
 class UserController extends Controller
 {
@@ -184,39 +182,5 @@ class UserController extends Controller
         } else {
             return redirect()->route('users.index')->with('msg', 'Liên kết không tồn tại');
         }
-    }
-    public function relations()
-    {
-        // $phone = Users::find(1)->phone;
-        // $idPhone = $phone->id;
-        // $phoneNumber = $phone->phone;
-        // echo "ID Phone: " . $idPhone . "<br>";
-        // echo "Phone Number: " . $phoneNumber . "<br>";
-
-
-        // $phone = Users::find(1)->phone;
-        // dd($phone);
-
-        // $user = Phone::where('phone', "0327461459")->first()->user;
-        // $fullName = $user->fullName;
-        // $email = $user->email;
-        // echo "Full Name: " . $fullName . "<br>";
-        // echo "Email: " . $email . "<br>";
-
-        // $users = Groups::find(1)
-        // ->users()
-        // ->where('email', 'phvanthanh11@gmail.com')->get();
-        // if ($users->count() > 0) {
-        //     foreach ($users as $item) {
-        //         echo "Full Name: " . $item->fullName . "<br>";
-        //         echo "Email: " . $item->email . "<br>";
-        //         echo "---------------------<br>";
-        //     }
-        // }
-
-
-        $groups = Users::find(1)->group;
-        $groupName = $groups->name;
-        echo "Group Name: " . $groupName . "<br>";
     }
 }

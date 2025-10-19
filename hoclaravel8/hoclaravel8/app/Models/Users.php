@@ -5,34 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
-use App\Models\Phone;
-use App\Models\Groups;
 
 class Users extends Model
 {
     use HasFactory;
 
     protected $table = "users";
-
-    public function phone()
-    {
-        return $this->hasOne(
-            Phone::class,
-            "user_id",
-            "id"
-        )->withDefault(function ($phone) {
-            $phone->phone = "Không xác định";
-        });
-    }
-
-    public function group()
-    {
-        return $this->belongsTo(
-            Groups::class,
-            "group_id",
-            "id"
-        );
-    }
 
     public function getAllUsers($filters = [])
     {
